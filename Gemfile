@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem "middleman", "~>3.3.10"
 gem "middleman-deploy"
 gem 'middleman-search_engine_sitemap'
+gem 'middleman-blog'
 
 gem "neat", "~> 1.7.1"
 gem "bitters", "~> 0.10.1"
