@@ -53,6 +53,12 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+set :relative_links, true
+
+activate :search_engine_sitemap
+
+activate :directory_indexes
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
@@ -69,4 +75,35 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+end
+
+configure :development do
+  activate :livereload
+end
+
+# Build-specific configuration
+configure :build do
+  #set :url_root, 'http://www.penandlens.club'
+  # For example, change the Compass output style for deployment
+  activate :minify_css
+
+  # Minify Javascript on build
+  activate :minify_javascript
+
+  # Enable cache buster
+  # activate :asset_hash
+
+  # Use relative URLs
+  activate :relative_assets
+
+  # Or use a different image path
+  # set :http_prefix, "/book_club/"
+end
+
+activate :deploy do |deploy|
+  deploy.build_before = true # default: false
+  deploy.method = :git
+  # Optional Settings
+  # deploy.remote = "custom-remote" # remote name or git url, default: origin
+  # deploy.branch = "custom-branch" # default: gh-pages
 end
