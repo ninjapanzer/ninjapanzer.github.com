@@ -59,6 +59,10 @@ body{
   }
 }
 
+.body--content{
+  padding-left: 2em;
+}
+
 .about-me{
   @include span-columns(8);
   @include shift(1);
@@ -67,15 +71,43 @@ body{
     font-size: 1.3em;
   }
   .about--content{
+    @extend .body--content;
+  }
+}
+
+.easter-egg{
+  color: $background-color;
+  font-size: 0.3em;
+}
+
+.blog .abstract{
+  font-size: 0.7em;
+}
+
+.blog .next-prev{
+  font-size: 1em;
+  margin-bottom: 0.25em;
+  a{
+    padding-right: 0px;
   }
 }
 
 .personal-image{
   @include span-columns(2);
   width: 20%;
+  text-align: center;
   img{
     width: 100%;
   }
+  &:after{
+    content: "Paul Scarrone
+    \00000A
+    paul.scarrone@gmail.com";
+  }
+}
+
+aside{
+  @extend .content;
 }
 
 .footer{
@@ -89,6 +121,7 @@ a, a:visited, a:active, a:visited{
   background: image-url('link-icon.png') no-repeat right bottom;
   &:hover{
     color:$base-link-hover-text-color;
+    align-content: center;
   }
 }
 
