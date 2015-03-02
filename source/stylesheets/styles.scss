@@ -6,8 +6,13 @@
 @import 'neat/neat';
 @import 'base/base';
 
-$background_color: #C3FEFB;
-$base-text-color: $dark-gray;
+@import 'vignette';
+
+$background-color: #467D6D;
+$base-text-color: darken(white, 10%);
+$base-link-text-color: lighten(#7D6D46, 30%);
+$base-link-hover-text-color: darken(#6D467D, 5%);
+$base-font-family: "Lucida Console", Monaco, monospace;
 
 section, div, section{
   border-radius: 0.2em;
@@ -20,16 +25,70 @@ header{
 }
 
 body{
+  font-family: $base-font-family;
+  background-color: $background-color;
+  color: $base-text-color;
+}
+
+.header{
+  @include outer-container;
+}
+
+.logo{
+  text-transform: uppercase;
+  font-size: 1em;
+  @include span-columns(8);
+  @include shift(2);
+  text-align: center;
+}
+
+.subtext{
+  @include span-columns(8);
+  font-size: 0.3em;
+  @include shift(2);
+  text-align: center;
+}
+
+.content{
+  @include outer-container;
+}
+
+.body--header{
+  &:before{
+    content: "###";
+  }
+}
+
+.about-me{
+  @include span-columns(8);
+  @include shift(1);
+  .about--header{
+    @extend .body--header;
+    font-size: 1.3em;
+  }
+  .about--content{
+  }
+}
+
+.personal-image{
+  @include span-columns(2);
+  width: 20%;
+  img{
+    width: 100%;
+  }
+}
+
+.footer{
   @include outer-container;
 }
 
 a, a:visited, a:active, a:visited{
   text-decoration: none;
-  color: $base-text-color;
+  color: $base-link-text-color;
   padding-right: 12px;
   background: image-url('link-icon.png') no-repeat right bottom;
   &:hover{
-    color:#A6E22D;
+    color:$base-link-hover-text-color;
   }
 }
 
@@ -40,7 +99,7 @@ nav{
     padding-right: initial;
     background: initial;
     &:hover{
-      color:#A6E22D;
+      color:$base-link-hover-text-color;
     }
   }
 }
@@ -54,7 +113,6 @@ nav{
 
 section.book-info, section.discussion-info{
   @include row;
-  background-color: $background_color;
   margin: 0.5em;
   padding: 0.5em;
 }
@@ -115,7 +173,7 @@ section.discussion-info{
   .info{
     max-width: 70%;
     border: 3px solid white;
-    background-color: lighten($background_color, 5%);
+    background-color: lighten($background-color, 5%);
     @include media($single-column){
       margin: auto;
       max-width: initial;

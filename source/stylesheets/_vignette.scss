@@ -1,0 +1,25 @@
+p.vignette {
+  position: relative;
+}
+
+p.vignette img {
+  display: block;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:6%;
+  border-radius: 4em;
+}
+
+p.vignette:after {
+  -moz-box-shadow: inset 0 0 100px #467D6D;
+  -webkit-box-shadow: inset 0 0 100px #467D6D;
+  box-shadow: inset 0 0 100px #467D6D;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  content: "";
+}
