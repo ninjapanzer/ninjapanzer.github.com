@@ -53,6 +53,10 @@ body{
   @include outer-container;
 }
 
+.content.blog{
+  @include shift(1);
+}
+
 .body--header{
   &:before{
     content: "###";
@@ -82,6 +86,11 @@ body{
 
 .blog .abstract{
   font-size: 0.7em;
+}
+
+.blog{
+  @include span-columns(10);
+  @include shift(1);
 }
 
 .blog .next-prev{

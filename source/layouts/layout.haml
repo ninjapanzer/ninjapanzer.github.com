@@ -13,5 +13,8 @@
     = javascript_include_tag  "all"
   %body{class: page_classes}
     .header= partial "header"
+    .content.nav
+      = link_to "Home", "/"
+      = link_to "Blog", "/blog/"
     .content= yield
     .footer= partial "footer"

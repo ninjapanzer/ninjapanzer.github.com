@@ -11,23 +11,25 @@
     = javascript_include_tag  "all"
   %body{class: page_classes}
     .header= partial "header"
+    .content.nav
+      = link_to "Home", "/"
     .content
       - unless current_article.nil?
         %h1= current_article.title
       = yield
     .footer= partial "footer"
-    %aside
-      %h4 Recent Articles
-      %ol
-        - blog.articles[0...10].each do |article|
-          %li
-            = link_to article.title, article
-            %span= article.date.strftime('%b %e')
-      %h5 Tags
-      %ol
-        - blog.tags.each do |tag, articles|
-          %li= link_to "#{tag} (#{articles.size})", tag_path(tag)
-      %h5 By Year
-      %ol
-        - blog.articles.group_by {|a| a.date.year }.each do |year, articles|
-          %li= link_to "#{year} (#{articles.size})", blog_year_path(year)
+  %aside
+    %h4 Recent Articles
+    %ol
+      - blog.articles[0...10].each do |article|
+        %li
+          = link_to article.title, article
+          %span= article.date.strftime('%b %e')
+    %h5 Tags
+    %ol
+      - blog.tags.each do |tag, articles|
+        %li= link_to "#{tag} (#{articles.size})", tag_path(tag)
+    %h5 By Year
+    %ol
+      - blog.articles.group_by {|a| a.date.year }.each do |year, articles|
+        %li= link_to "#{year} (#{articles.size})", blog_year_path(year)
