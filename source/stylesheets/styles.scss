@@ -1,0 +1,232 @@
+@charset "utf-8";
+
+@import 'normalize';
+@import 'bourbon/bourbon';
+@import 'grid-settings';
+@import 'neat/neat';
+@import 'base/base';
+
+@import 'vignette';
+
+$background-color: #467D6D;
+$base-text-color: darken(white, 10%);
+$base-link-text-color: lighten(#7D6D46, 30%);
+$base-link-hover-text-color: darken(#6D467D, 5%);
+$base-font-family: "Lucida Console", Monaco, monospace;
+
+section, div, section{
+  border-radius: 0.2em;
+  padding:0.2rem;
+}
+
+header{
+  text-align: center;
+  font-size: 2em;
+}
+
+body{
+  font-family: $base-font-family;
+  background-color: $background-color;
+  color: $base-text-color;
+}
+
+.header{
+  @include outer-container;
+}
+
+.logo{
+  text-transform: uppercase;
+  font-size: 1em;
+  @include span-columns(8);
+  @include shift(2);
+  text-align: center;
+}
+
+.subtext{
+  @include span-columns(8);
+  font-size: 0.3em;
+  @include shift(2);
+  text-align: center;
+}
+
+.content{
+  @include outer-container;
+}
+
+.content.blog{
+  @include shift(1);
+}
+
+.body--header{
+  &:before{
+    content: "###";
+  }
+}
+
+.body--content{
+  padding-left: 2em;
+}
+
+.about-me{
+  @include span-columns(8);
+  @include shift(1);
+  .about--header{
+    @extend .body--header;
+    font-size: 1.3em;
+  }
+  .about--content{
+    @extend .body--content;
+  }
+}
+
+.easter-egg{
+  color: $background-color;
+  font-size: 0.3em;
+}
+
+.blog .abstract{
+  font-size: 0.7em;
+}
+
+.blog{
+  @include span-columns(10);
+  @include shift(1);
+}
+
+.blog .next-prev{
+  font-size: 1em;
+  margin-bottom: 0.25em;
+  a{
+    padding-right: 0px;
+  }
+}
+
+.personal-image{
+  @include span-columns(2);
+  width: 20%;
+  text-align: center;
+  img{
+    width: 100%;
+  }
+  &:after{
+    content: "Paul Scarrone
+    \00000A
+    paul.scarrone@gmail.com";
+  }
+}
+
+aside{
+  @extend .content;
+}
+
+.footer{
+  @include outer-container;
+}
+
+a, a:visited, a:active, a:visited{
+  text-decoration: none;
+  color: $base-link-text-color;
+  padding-right: 12px;
+  background: image-url('link-icon.png') no-repeat right bottom;
+  &:hover{
+    color:$base-link-hover-text-color;
+    align-content: center;
+  }
+}
+
+nav{
+  a, a:visited, a:active, a:visited{
+    text-decoration: none;
+    color: $base-text-color;
+    padding-right: initial;
+    background: initial;
+    &:hover{
+      color:$base-link-hover-text-color;
+    }
+  }
+}
+
+.reading-list{
+  ol{
+    list-style-type: decimal;
+    margin-left: 3em;
+  }
+}
+
+section.book-info, section.discussion-info{
+  @include row;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+section.discussion-info{
+  background-color: lighten(#A5A8AB, 10%);
+  a:hover{
+    color:white;
+  }
+}
+
+.discussion-info--resources{
+  @include shift(1);
+  @include media($single-column){
+    @include span-columns(1);
+    @include shift(0);
+  }
+  .title{
+    @extend .general--title;
+    text-decoration: none;
+  }
+}
+
+.book-info--img{
+  @include span-columns(3.5);
+  @include shift(1);
+  @include media($single-column){
+    @include span-columns(1);
+    @include shift(0);
+  }
+}
+
+.general--title{
+  font-size: 3em;
+  @include media($single-column){
+    text-align: center;
+  }
+}
+
+.book-info--description{
+  @include span-columns(5.5);
+  @include shift(1);
+  @include media($single-column){
+    @include span-columns(1);
+    @include shift(0);
+  }
+  .title{
+    @extend .general--title;
+    text-decoration: underline;
+  }
+  .by{
+    margin-bottom: 3rem;
+    font-style: italic;
+    @include media($single-column){
+      text-align: center;
+    }
+  }
+  .info{
+    max-width: 70%;
+    border: 3px solid white;
+    background-color: lighten($background-color, 5%);
+    @include media($single-column){
+      margin: auto;
+      max-width: initial;
+    }
+
+    .available {
+      ul {
+        list-style: none;
+        margin-top: 0.3em;
+        padding-left: 1em;
+      }
+    }
+  }
+}
